@@ -1,6 +1,7 @@
 status = '';
 canvas = '';
 video = '';
+objects = [];
 function setup() {
     canvas = createCanvas(640, 420);
     canvas.center();
@@ -10,6 +11,7 @@ function setup() {
 function start() {
     document.getElementById('status').innerHTML = "Status: Detecting Objects";
     objectDetector = ml5.objectDetector('cocossd', modelLoaded);
+    objectDetector.detect(gotResult);
 }
 function modelLoaded() {
     console.log('Model successfully loaded!');
